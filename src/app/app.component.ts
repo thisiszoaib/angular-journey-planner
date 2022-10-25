@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
 import {
   PlaceAutocompleteComponent,
   PlaceSearchResult,
 } from './components/place-autocomplete.component';
 import { PlaceCardComponent } from './components/place-card.component';
-import { FormsModule } from '@angular/forms';
 import { MapDisplayComponent } from './components/map-display.component';
 import { NgIf } from '@angular/common';
 
@@ -17,7 +15,6 @@ import { NgIf } from '@angular/common';
     MatToolbarModule,
     PlaceAutocompleteComponent,
     PlaceCardComponent,
-    FormsModule,
     MapDisplayComponent,
     NgIf,
   ],
@@ -28,12 +25,12 @@ import { NgIf } from '@angular/common';
       <div class="input-area">
         <h2>I want to go from</h2>
         <app-place-autocomplete
-          [(ngModel)]="fromValue"
+          (placeChanged)="fromValue = $event"
           placeholder="Enter from address..."
         ></app-place-autocomplete>
         <h2>to</h2>
         <app-place-autocomplete
-          [(ngModel)]="toValue"
+          (placeChanged)="toValue = $event"
           placeholder="Enter to address..."
         ></app-place-autocomplete>
       </div>
